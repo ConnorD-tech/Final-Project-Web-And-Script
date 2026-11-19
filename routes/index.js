@@ -19,6 +19,12 @@ router.get('/landingpage', function(req, res, next) {
   res.render('landingpage', { title: 'Landing Page' }); 
 });
 
+/* GET maker page. */
+//When its "/" go to maker.ejs
+router.get('/maker', function(req, res, next) {
+  res.render('maker', { title: 'maker' }); 
+});
+
 module.exports = router;
 
 
