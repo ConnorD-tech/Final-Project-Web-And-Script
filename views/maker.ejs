@@ -6,20 +6,24 @@
     <%- include partials/header.ejs %>
     <%- include partials/main_nav.ejs %>
     <%- include partials/footer.ejs %>
+    <div id="content">
     <h1>
       <%= title %>
     </h1>
     <p>Welcome to <%= title %>
     </p>
     <form id="contactForm">
-      <label for= "nameOfQuiz">Name:</label><br>
-      <input type="text" id="nameOfQuiz" name="nameOfQuiz" required><br>
+      <label for= "nameOfQuiz">Enter Name of Quiz:</label><br>
+      <input type="text" id="nameOfQuiz" name="nameOfQuiz" required placeholder="Enter Name of Quiz" style="width: 55%;"><br><br>
       <button type="submit" id="submit">Submit</button>
       <!--<input type="submit" value="Submit">-->
     </form>
-    <input type="text" id="text" name="text"><br>
+    <input type="text" id="text" name="text" required placeholder="Enter Label Text" style="width: 55%;"><br>
+    <br>
+    <br>
     <button id = 'addCheckbox' type="addCheckbox">Add Checkbox</button>
     <button id = 'addInput' type="addInput">Add Input</button><br>
+    </div>
   </body>
 </html>
 

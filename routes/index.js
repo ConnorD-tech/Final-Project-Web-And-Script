@@ -22,7 +22,7 @@ router.get('/landingpage', function(req, res, next) {
 /* GET maker page. */
 //When its "/" go to maker.ejs
 router.get('/maker', function(req, res, next) {
-  res.render('maker', { title: 'maker' }); 
+  res.render('maker', { title: 'Maker' }); 
 });
 
 module.exports = router;
