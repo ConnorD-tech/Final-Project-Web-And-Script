@@ -50,7 +50,7 @@
     input.placeholder = 'No need to fill out'
 
     const question = document.createElement("input");
-    question.id = uniqueId;
+    question.id = 'question' + uniqueId;
     question.name = 'question' + uniqueId;
     question.type = 'text';
     question.placeholder = 'Put Question Here'
@@ -69,15 +69,15 @@
     uniqueId++;
 
     const checkbox = document.createElement("input");
-    checkbox.id = uniqueId;
+    checkbox.id = 'checkbox';
     checkbox.name = 'checkbox' + uniqueId;
     checkbox.type = "checkbox";
-    checkbox.checked = true
     
 
     const input = document.createElement("input");
-    input.id = 'input';
+    input.id = 'checkbox' + uniqueId;
     input.type = 'text';
+    input.name = 'checkbox' + uniqueId
 
     const lineBreak = document.createElement('br');
 
@@ -88,9 +88,5 @@
     contactForm.insertBefore(input, submit);
     contactForm.insertBefore(lineBreak, submit);
   });
-
-
-
-
 
 </script>
