@@ -1,9 +1,122 @@
 <!-- includes header, main_nav, and footer partials. -->
-<%- include partials/header.ejs %>
-  <%- include partials/main_nav.ejs %>
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <%- include partials/header.ejs %>
+    <%- include partials/main_nav.ejs %>
     <%- include partials/footer.ejs %>
-      <h1>
-        <%= title %>
-      </h1>
-      <p>Welcome to <%= title %>
-      </p>
+    <div id="content">
+    <h1>
+      <%= title %>
+    </h1>
+    <p>Multiple Choice template</p>
+    <form id="contactForm">
+      <label for= "nameOfQuiz">Enter Name of Quiz:</label><br>
+      <input type="text" id="nameOfQuiz" name="nameOfQuiz" required placeholder="Enter Name of Quiz" style="width: 55%;"><br>
+      <input type="checkbox">
+      <input type="text"><br>
+      <input type="checkbox">
+      <input type="text"><br>
+      <input type="checkbox">
+      <input type="text"><br>
+      <input type="checkbox">
+      <input type="text"><br>
+      <br>
+      <button type="submit" id="submit">Submit</button>
+      <!--<input type="submit" value="Submit">-->
+    </form>
+    <input type="text" id="text" name="text" required placeholder="Enter Label Text" style="width: 55%;"><br>
+    <br>
+    <br>
+    <button id = 'addCheckbox' type="addCheckbox">Add Checkbox</button>
+    <button id = 'addInput' type="addInput">Add Input</button><br>
+    </div>
+</html>
+
+<script>
+  //Submit Taken from https://www.youtube.com/shorts/ho_30dN-GMM
+  const form = document.getElementById('contactForm');
+  //const submit = document.getElementById('submit');
+
+  let labelCount = 0;
+  let labelsID = []
+  let labels = []
+  let inputType = []
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    //const nameOfQuiz = data.get('nameOfQuiz');
+    //console.log(nameOfQuiz);
+    //const entries = Object.fromEntries(data.entries());
+    //const entries = data.getAll('input');
+    console.log(labels);
+    console.log(labelsID);
+    console.log(inputType);
+  });
+
+  //adds things to form
+  document.getElementById("addInput").addEventListener("click", () => {
+    const idk = document.getElementById("text");
+    const text = idk.value;
+    labelCount += 1;
+    const uniqueId = `input${labelCount}`;
+
+    const input = document.createElement("input");
+    input.id = 'input';
+    input.name = 'input';
+    input.type = 'text';
+
+    const label = document.createElement('label');
+    label.htmlFor = 'input'; 
+    label.textContent = text;
+    label.id = uniqueId
+    
+
+    const lineBreak = document.createElement('br');
+    const lineBreak2 = document.createElement('br');
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm.appendChild(input);
+    contactForm.appendChild(label);
+    contactForm.insertBefore(label, submit);
+    contactForm.insertBefore(lineBreak2, submit);
+    contactForm.insertBefore(input, submit);
+    contactForm.insertBefore(lineBreak, submit);
+    labelsID[labelsID.length] = uniqueId
+    labels[labels.length] = (document.getElementById(uniqueId).textContent)
+    inputType[inputType.length] = 'input'
+  });
+
+  document.getElementById("addCheckbox").addEventListener("click", () => {
+    const idk = document.getElementById("text");
+    const text = idk.value;
+    labelCount += 1;
+    const uniqueId = `input${labelCount}`;
+
+    const checkbox = document.createElement("input");
+    checkbox.id = 'checkbox';
+    checkbox.name = 'checkbox';
+    checkbox.type = "checkbox";
+    checkbox.checked = true
+
+    const label = document.createElement('label');
+    label.htmlFor = 'checkbox';
+    label.textContent = text;
+    label.id = uniqueId
+
+    const lineBreak = document.createElement('br');
+
+    const contactForm = document.getElementById('contactForm');
+    contactForm.appendChild(checkbox);
+    contactForm.appendChild(label);
+    contactForm.insertBefore(checkbox, submit);
+    contactForm.insertBefore(label, submit);
+    contactForm.insertBefore(lineBreak, submit);
+    labelsID[labelsID.length] = uniqueId
+    labels[labels.length] = (document.getElementById(uniqueId).textContent)
+    inputType[inputType.length] = 'checkBox'
+  });
+</script>

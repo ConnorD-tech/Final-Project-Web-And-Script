@@ -18,7 +18,6 @@
       <button type="submit" id="submit">Submit</button>
       <!--<input type="submit" value="Submit">-->
     </form>
-    <input type="text" id="text" name="text" required placeholder="Enter Label Text" style="width: 55%;"><br>
     <br>
     <br>
     <button id = 'addCheckbox' type="addCheckbox">Add Checkbox</button>
@@ -33,83 +32,65 @@
   const form = document.getElementById('contactForm');
   //const submit = document.getElementById('submit');
 
-  let labelCount = 0;
-  let labelsID = []
-  let labels = []
-  let inputType = []
+  let uniqueId = 0
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    //const nameOfQuiz = data.get('nameOfQuiz');
-    //console.log(nameOfQuiz);
-    //const entries = Object.fromEntries(data.entries());
-    //const entries = data.getAll('input');
-    console.log(labels);
-    console.log(labelsID);
-    console.log(inputType);
+    const entries = Object.fromEntries(data.entries());
+    console.log(entries)
   });
 
-  //adds things to form
   document.getElementById("addInput").addEventListener("click", () => {
-    const idk = document.getElementById("text");
-    const text = idk.value;
-    labelCount += 1;
-    const uniqueId = `input${labelCount}`;
+    uniqueId++;
 
     const input = document.createElement("input");
     input.id = 'input';
-    input.name = 'input';
     input.type = 'text';
+    input.placeholder = 'No need to fill out'
 
-    const label = document.createElement('label');
-    label.htmlFor = 'input'; 
-    label.textContent = text;
-    label.id = uniqueId
-    
+    const question = document.createElement("input");
+    question.id = uniqueId;
+    question.name = 'question' + uniqueId;
+    question.type = 'text';
+    question.placeholder = 'Put Question Here'
 
     const lineBreak = document.createElement('br');
-    const lineBreak2 = document.createElement('br');
 
     const contactForm = document.getElementById('contactForm');
     contactForm.appendChild(input);
-    contactForm.appendChild(label);
-    contactForm.insertBefore(label, submit);
-    contactForm.insertBefore(lineBreak2, submit);
+    contactForm.appendChild(question);
+    contactForm.insertBefore(question, submit);
     contactForm.insertBefore(input, submit);
     contactForm.insertBefore(lineBreak, submit);
-    labelsID[labelsID.length] = uniqueId
-    labels[labels.length] = (document.getElementById(uniqueId).textContent)
-    inputType[inputType.length] = 'input'
   });
 
   document.getElementById("addCheckbox").addEventListener("click", () => {
-    const idk = document.getElementById("text");
-    const text = idk.value;
-    labelCount += 1;
-    const uniqueId = `input${labelCount}`;
+    uniqueId++;
 
     const checkbox = document.createElement("input");
-    checkbox.id = 'checkbox';
-    checkbox.name = 'checkbox';
+    checkbox.id = uniqueId;
+    checkbox.name = 'checkbox' + uniqueId;
     checkbox.type = "checkbox";
     checkbox.checked = true
+    
 
-    const label = document.createElement('label');
-    label.htmlFor = 'checkbox';
-    label.textContent = text;
-    label.id = uniqueId
+    const input = document.createElement("input");
+    input.id = 'input';
+    input.type = 'text';
 
     const lineBreak = document.createElement('br');
 
     const contactForm = document.getElementById('contactForm');
     contactForm.appendChild(checkbox);
-    contactForm.appendChild(label);
+    contactForm.appendChild(input);
     contactForm.insertBefore(checkbox, submit);
-    contactForm.insertBefore(label, submit);
+    contactForm.insertBefore(input, submit);
     contactForm.insertBefore(lineBreak, submit);
-    labelsID[labelsID.length] = uniqueId
-    labels[labels.length] = (document.getElementById(uniqueId).textContent)
-    inputType[inputType.length] = 'checkBox'
   });
+
+
+
+
+
 </script>
